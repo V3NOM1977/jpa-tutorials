@@ -17,13 +17,13 @@ public class User {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    private String name;
+    private String userName;
 
     public User() {
     }
 
     public User(String name) {
-        this.name = name;
+        this.userName = name;
     }
 
 }

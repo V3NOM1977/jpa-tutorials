@@ -21,7 +21,7 @@ public class JpaApplication {
 			for (var i = 0; i < 5; i++)
 				repo.save(new User("User " + (i + 1)));
 			Sort sort = Sort.by(
-					Sort.Order.asc("name"),
+					Sort.Order.asc("userName"),
 					Sort.Order.desc("id"));
 			Pageable pageable = PageRequest.of(0, 5, sort);
 			System.out.println(repo.findAll(pageable).getContent());
