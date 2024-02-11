@@ -1,6 +1,11 @@
-package com.example.jpa;
+package com.example.jpa.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.example.jpa.models.User;
+
 public interface UserRepo extends JpaRepository<User, Long> {
+
+    Iterable<User> getUserData();
+
 }

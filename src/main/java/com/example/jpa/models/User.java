@@ -1,4 +1,4 @@
-package com.example.jpa;
+package com.example.jpa.models;
 
 import org.hibernate.annotations.GenericGenerator;
 

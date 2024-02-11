@@ -8,6 +8,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import com.example.jpa.models.User;
+import com.example.jpa.repositories.UserRepo;
+import com.example.jpa.repositories.UserRepoWithoutJpaRepo;
+
 @SpringBootApplication
 public class JpaApplication {
 
@@ -16,7 +20,7 @@ public class JpaApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(UserRepo repo) {
+	CommandLineRunner runner(UserRepo repo, UserRepoWithoutJpaRepo repoWithoutJpaRepo) {
 		return args -> {
 			for (var i = 0; i < 5; i++)
 				repo.save(new User("User " + (i + 1)));
@@ -25,6 +29,8 @@ public class JpaApplication {
 					Sort.Order.desc("id"));
 			Pageable pageable = PageRequest.of(0, 5, sort);
 			System.out.println(repo.findAll(pageable).getContent());
+			System.out.println("-----------------------------------------");
+			System.out.println(repoWithoutJpaRepo.findAll());
 		};
 	}
 
